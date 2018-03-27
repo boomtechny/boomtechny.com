@@ -1355,7 +1355,7 @@ exports.default = Project_Card;
 /* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "static/KELLY_MARTINEZ_RESUME.10017564.pdf";
+module.exports = __webpack_require__.p + "static/KELLY_MARTINEZ_RESUME.1886dbb6.pdf";
 
 /***/ }),
 /* 45 */
@@ -1853,7 +1853,7 @@ var Project = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Project.__proto__ || Object.getPrototypeOf(Project)).call(this, props));
 
-    _this.state = { hudReveal: true, dataproject: _this.props.project.sections };
+    _this.state = { hudReveal: true, dataproject: _this.props.project.sections, adjustScrollBy: 0 };
     _this.handleProjectClick = _this.handleProjectClick.bind(_this);
 
     //this._setMessage = this._setMessage.bind(this); 
@@ -1861,17 +1861,30 @@ var Project = function (_React$Component) {
   }
 
   _createClass(Project, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      //const fixedheaderHeight = document.querySelector('.header').offsetHeight(); 
+      // this.setState({adjustScrollBy:fixedheaderHeight});
+    }
+  }, {
     key: 'handleProjectClick',
     value: function handleProjectClick(e) {
       e.preventDefault();
 
+      // let adjustScrollBy = fixedheaderHeight*-1; 
       // Scroll to a certain element
-      document.querySelector('.project_section__wrapper').scrollIntoView({
+
+      document.querySelector('.project_content').scrollIntoView({
 
         block: 'start',
         behavior: 'smooth'
 
       });
+      setTimeout(function () {
+
+        window.scrollBy(0, -250);
+      }, 500);
+
       // console.log('clicked');
     }
   }, {
@@ -3192,10 +3205,15 @@ var Hero = function (_React$Component) {
       e.preventDefault();
 
       // Scroll to a certain element
-      document.querySelector('.featured_work').scrollIntoView({
+      document.querySelector('.section_container__content').scrollIntoView({
         block: 'start',
         behavior: 'smooth'
       });
+      setTimeout(function () {
+
+        window.scrollBy(0, -200);
+      }, 500);
+
       // console.log('clicked');
     }
   }, {
@@ -4074,20 +4092,20 @@ var Work_Featured = function (_React$Component) {
             _react2.default.createElement(
               'div',
               { className: 'section_content_wrapper__cards' },
-              this.createProjectCards(this.props.projects)
+              this.createProjectCards(this.props.projects),
+              _react2.default.createElement(
+                'div',
+                { className: 'section_container__footer' },
+                _react2.default.createElement('object', { className: 'decorator_left', data: _more_left2.default }),
+                _react2.default.createElement(
+                  _reactStatic.Link,
+                  { className: 'cta-button', to: '/work' },
+                  'VIEW ALL'
+                ),
+                _react2.default.createElement('object', { className: 'decorator_right', data: _more_right2.default })
+              )
             )
           )
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'section_container__footer' },
-          _react2.default.createElement('object', { className: 'decorator_left', data: _more_left2.default }),
-          _react2.default.createElement(
-            _reactStatic.Link,
-            { className: 'cta-button', to: '/work' },
-            'VIEW ALL'
-          ),
-          _react2.default.createElement('object', { className: 'decorator_right', data: _more_right2.default })
         )
       );
     }
@@ -4399,22 +4417,22 @@ var Profile_Summary = function (_React$Component) {
                 _react2.default.createElement(
                   'div',
                   { className: 'profile_wrapper__loadoutcard profile_cards' },
-                  this.createLoadoutCards(profile)
+                  this.createLoadoutCards(profile),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'section_container__footer' },
+                    _react2.default.createElement('object', { className: 'decorator_left', data: _more_left2.default }),
+                    _react2.default.createElement(
+                      _reactStatic.Link,
+                      { to: '/profile', className: 'cta-button' },
+                      'LEARN MORE'
+                    ),
+                    _react2.default.createElement('object', { className: 'decorator_right', data: _more_right2.default })
+                  )
                 )
               )
             )
           )
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'section_container__footer' },
-          _react2.default.createElement('object', { className: 'decorator_left', data: _more_left2.default }),
-          _react2.default.createElement(
-            _reactStatic.Link,
-            { to: '/profile', className: 'cta-button' },
-            'LEARN MORE'
-          ),
-          _react2.default.createElement('object', { className: 'decorator_right', data: _more_right2.default })
         )
       );
     }
@@ -5708,4 +5726,4 @@ exports.default = function () {
 /***/ })
 /******/ ]);
 });
-//# sourceMappingURL=static.e0af81c0.js.map
+//# sourceMappingURL=static.87cf5dbd.js.map
